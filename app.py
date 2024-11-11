@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, jsonify
+from flask import Flask, render_template, request, jsonify, json
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 
@@ -76,8 +76,8 @@ def recibir_mensajes(req):
         changes = entry ['changes'] [0]
         value = changes['value']
         objeto_mensaje = value ['message']
-        
-        agregar_mensajes_log(objeto_mensaje)
+
+        agregar_mensajes_log(json.dumps(objeto_mensaje))
 
 
 
